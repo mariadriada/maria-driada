@@ -1,64 +1,113 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        maria-driada
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div class="_body">
+    <div class="main_container">
+
+      <banner :title="`${ title }`" :subtitle="`${ subtitle }`"></banner>
+      <text-line :message="`${ message }`"></text-line>
+
+      <div id="box-container">
+        <div class="side left-side">
+          <info-container :img="`${ img.src }`" :alt="`${ img.alt }`">
+          </info-container>
+        </div>
+
+        <div class="side center-side">
+          <info-container activeList="true" idData="1">
+          </info-container>
+        </div>
+
+        <div class="side right-side">
+        </div>
       </div>
+
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import Banner from '~/components/Banner.vue'
+import TextLine from '~/components/TextLine.vue'
+import InfoContainer from '~/components/InfoContainer.vue'
 
 export default {
+
   components: {
-    AppLogo
+    Banner,
+    TextLine,
+    InfoContainer,
+  },
+  data () {
+    return {
+      title: 'Welcome!',
+      subtitle: "I'm Maria Giraldo",
+      message: 'I love to analyze and coding software',
+      img: {
+        src: '/img/maria_giraldo.png',
+        alt: 'Maria Giraldo',
+      },
+      textlist:
+      [
+        { id: 1, text: 'frase 1', active: true, circle: true },
+        { id: 2, text: 'frase 2', active: true, circle: true },
+      ]
+    }
   }
+
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+<style lang="scss">
+._body {
+  padding: 0;
+  width: 100%;
+
+  .main_container {
+    min-width: 100%;
+    height: 100vh;
+    background-image: url(/img/landscape1400.jpg);
+    background-size: 100% 100%;
+
+    #box-container{
+      display: flex;
+
+      .left-side {
+        width: 30%;
+      }
+      .center-side {
+        width: 60%;
+      }
+      .right-side {
+        width: 10%;
+      }
+    }
+  }
 }
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+/*
+@media screen and (max-width: 48rem) {
+._body{
+    .main_container {
+      #box-container {
+        display: block;
+        .side {
+          width: 100%;
+        }
+      }
+    }
+  }
+}*/
+@media screen and (max-width: 30rem) {
+._body{
+    .main_container {
+      #box-container {
+        display: block;
+        .side {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
 
-.links {
-  padding-top: 15px;
-}
 </style>
