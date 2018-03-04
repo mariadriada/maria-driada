@@ -2,7 +2,7 @@
   <div class="header2-container"">
     <div class="profile">
       <figure>
-        <img :src="`${ img }`" :alt="`${ alt }`" />
+        <nuxt-link to="/"><img :src="`${ img }`" :alt="`${ alt }`" /></nuxt-link>
       </figure>
     </div>
     <div class="container">
@@ -18,13 +18,11 @@
 </template>
 
 <script>
-import MainMenu from '~/components/Menu.vue'
-import Item from '~/components/Item.vue'
+import MainMenu from '~/components/menu/Menu.vue'
 
 export default {
   components: {
-    MainMenu,
-    Item
+    MainMenu
   },
   data() {
     return {
