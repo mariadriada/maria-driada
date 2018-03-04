@@ -1,5 +1,5 @@
 <template>
-<div class="header-container" :style="{ height: `${ height }`}">
+<div class="header-container">
     <h1 v-if="title"> {{ title }} </h1>
     <h2 v-if="subtitle"> {{ subtitle }} </h2>
 </div>
@@ -7,14 +7,14 @@
 
 <script>
 export default {
-  props: ['title', 'subtitle', 'height']
+  props: ['title', 'subtitle']
 }
 </script>
 
 <style lang="scss">
 .header-container {
   min-width: 100%;
-  //min-height: 25vh;
+  min-height: 25vh;
   min-height: auto;
   text-align: center;
   color: #FAFAFA;
