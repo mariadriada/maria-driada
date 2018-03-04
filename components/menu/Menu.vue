@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       options: [
-        { id: 1, name: 'About', window:'selft', active: true,  link: '/' },
+        { id: 1, name: 'About', window:'selft', active: true,  link: '/about' },
         { id: 2, name: 'Skills', window:'new', active: true, link: '.' },
         { id: 3, name: 'Experience', window:'new', active: true, link: '.' },
         { id: 4, name: 'Resume', window:'new', active: true, link: 'https://www.linkedin.com/in/mariadriada/?locale=en_US'},

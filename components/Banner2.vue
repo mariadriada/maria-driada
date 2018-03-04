@@ -2,7 +2,7 @@
   <div class="header2-container"">
     <div class="profile">
       <figure>
-        <nuxt-link to="/"><img :src="`${ img }`" :alt="`${ alt }`" /></nuxt-link>
+        <nuxt-link to="/about"><img :src="`${ img }`" :alt="`${ alt }`" /></nuxt-link>
       </figure>
     </div>
     <div class="container">
