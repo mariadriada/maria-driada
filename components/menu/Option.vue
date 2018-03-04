@@ -50,11 +50,11 @@ export default {
   font-size: 1.3em;
   border-radius: 0.5em 0.5em 0 0;
   cursor: pointer;
+}
 
-  :hover {
-    color: #4A148C;
-    font-weight: 500;
-  }
+li:hover {
+  color: #4A148C;
+  font-weight: 500;
 }
 
 .active {
