@@ -50,20 +50,17 @@ export default {
   font-size: 1.3em;
   border-radius: 0.5em 0.5em 0 0;
   cursor: pointer;
+
+  &:hover {
+    color: #673AB7;
+    font-weight: 500;
+  }
+
+  &.active {
+    color: #673AB7;
+    font-weight: 500;
+    transition:  0.3s;
+    -webkit-transition: 0.3s;
+  }
 }
-
-li:hover {
-  color: #4A148C;
-  font-weight: 500;
-}
-
-.active {
-  color: #673AB7;
-  font-weight: 500;
-  transition:  0.3s;
-  -webkit-transition: 0.3s;
-}
-
-
-
 </style>
