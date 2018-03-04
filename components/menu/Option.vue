@@ -1,19 +1,20 @@
 <template>
-    <li @click="change" class="tabs-item" >
-      {{ name }}
-    </li>
+    <li @click="change" class="tabs-item" > {{ name }} </li>
 </template>
-
 
 <script>
 export default {
   props: ['name', 'link', 'window'],
   methods: {
     change: function (e) {
-      const tabs = Array.prototype.slice.apply(document.querySelectorAll('.tabs-item'))
-      const i = tabs.indexOf(e.target)
+      let tabs = Array.prototype.slice.apply(document.querySelectorAll('.tabs-item'))
+      let panels = Array.prototype.slice.apply(document.querySelectorAll('.panel'))
+
       tabs.map(tab => tab.classList.remove('active'))
       tabs[i].classList.add('active')
+
+      panels.map(panel => panel.classList.remove('active'))
+      panels[i].classList.add('active')
 
       //Redirection validation
       if (this.link === '.')
@@ -39,10 +40,10 @@ export default {
 
 <style lang="scss">
 .tabs-item {
-  background-color: #FAFAFA;
+  //background-color: #FAFAFA;
   margin-left: 1px;
   padding: 0.5em;
-  color: #757575;
+  color:#FAFAFA;
   min-width: auto;
   width: 6em;
   max-width: auto;
@@ -52,12 +53,12 @@ export default {
   cursor: pointer;
 
   &:hover {
-    color: #673AB7;
+    color: #FFFF00;
     font-weight: 500;
   }
 
   &.active {
-    color: #673AB7;
+    color: #FFFF00;
     font-weight: 500;
     transition:  0.3s;
     -webkit-transition: 0.3s;
