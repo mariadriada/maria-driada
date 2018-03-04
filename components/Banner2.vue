@@ -1,20 +1,20 @@
 <template>
-  <div class="header2-container"">
+  <header class="header2-container"">
     <div class="profile">
       <figure>
         <nuxt-link to="/about"><img :src="`${ img }`" :alt="`${ alt }`" /></nuxt-link>
       </figure>
     </div>
     <div class="container">
-      <div class="text">
+      <hgroup class="content">
         <h1> {{ text1 }} </h1>
         <h2> {{ text2 }}</h2>
-      </div>
-      <div class="text">
+      </hgroup>
+      <nav class="content nav">
         <main-menu/>
-      </div>
+      </nav>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -63,15 +63,13 @@ export default {
         margin: 0 auto;
       }
     }
-
-
   }
   .container{
     width:70%;
     height: inherit;
     font-size: 1rem;
 
-    div {
+    .content {
       width:100%;
       height: 50%;
 
