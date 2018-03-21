@@ -13,9 +13,10 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Orbitron|Oswald|Raleway|Roboto+Mono|Ubuntu'}
+      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Orbitron|Ubuntu'}
     ]
   },
+  css: ['~/assets/keyframes.css'],
   /*
   ** Customize the progress bar color
   */
@@ -55,5 +56,5 @@ module.exports = {
 
   },
 
-  plugins: ['~plugins/vue-awesome.js']
+  plugins: ['~plugins/vue-awesome.js' ]
 }
