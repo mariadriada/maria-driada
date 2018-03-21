@@ -13,7 +13,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Orbitron|Ubuntu'}
+      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Orbitron|Ubuntu|Indie+Flower|Raleway'}
     ]
   },
   css: ['~/assets/keyframes.css'],
