@@ -50,4 +50,23 @@
   justify-content: $value;
 }
 
+//Active element
+@mixin active($color: #FFFF00, $fw: 400 ) {
+  color: $color;
+  font-weight: $fw;
+}
 
+//Disable element
+@mixin disable($color: #4FC3F7 ) {
+
+  pointer-events: none;
+
+  a {
+    color: $color;
+  }
+
+  ::before {
+    content: 'This is ';
+
+  }
+}
