@@ -1,4 +1,5 @@
 const nodeExternals = require('webpack-node-externals')
+const resolve = require('path').resolve
 
 module.exports = {
   /*
@@ -42,19 +43,21 @@ module.exports = {
     vendor: ['vue-awesome'],
 
     extend (config, { isServer }) {
-      // ...
       if (isServer) {
         config.externals = [
           nodeExternals({
-            // default value for `whitelist` is
-            // [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
             whitelist:[/es6-promise|\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
           })
         ]
       }
-    }
-
+    },
   },
 
-  plugins: ['~plugins/vue-awesome.js' ]
+  plugins: ['~plugins/vue-awesome.js' ],
+
+  modules: [
+    ['nuxt-sass-resources-loader', resolve(__dirname, './assets/mixins.scss')]
+  ]
+
 }
+
