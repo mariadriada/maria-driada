@@ -1,5 +1,4 @@
 const nodeExternals = require('webpack-node-externals')
-const resolve = require('path').resolve
 
 module.exports = {
   /*
@@ -56,7 +55,7 @@ module.exports = {
   plugins: ['~plugins/vue-awesome.js' ],
 
   modules: [
-    ['nuxt-sass-resources-loader', resolve(__dirname, './assets/mixins.scss')]
+    ['nuxt-sass-resources-loader', '~/assets/mixins.scss']
   ]
 
 }
