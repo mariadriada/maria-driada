@@ -6,8 +6,10 @@
 
       <!-- screen -->
       <div class="screen">
+
         <banner :title="`${ title }`" :subtitle="`${ subtitle }`"></banner>
-        <text-line :message="`${ message }`" id="fixed" class=" budge-left"></text-line>
+
+        <text-line :message="`${ message }`" id="fixed"class=" budge-left"></text-line>
 
         <!--box-container-->
         <div id="box-container" class="box-container budge-right">
@@ -60,6 +62,7 @@
       </div>
       <!-- next-container -->
 
+    <nav class="menu"> <basic-menu/> </nav>
     <footer-div/>
 
     </div>
@@ -75,6 +78,7 @@ import TextLine from '~/components/TextLine.vue'
 import InfoContainer from '~/components/InfoContainer.vue'
 import FooterDiv from '~/components/Footer.vue'
 import OpacityContainer from '~/components/OpacityContainer.vue'
+import BasicMenu from '~/components/menu/BasicMenu.vue'
 
 //vue-awesome plugin import
 import "vue-awesome/icons/angle-up"
@@ -90,6 +94,7 @@ export default {
     InfoContainer,
     OpacityContainer,
     Icon,
+    BasicMenu,
     FooterDiv
   },
 
@@ -113,7 +118,7 @@ export default {
                       the planning of projects and work by objectives.`,
         text2: 'Responsible and dedicated to knowledge that I have no.',
 
-      }
+      },
     }
   },
 
@@ -196,6 +201,7 @@ export default {
     overflow: hidden;
 
     .screen {
+
       background-image: url('/img/bg1400.jpg');
       background-attachment: fixed;
       background-size: cover;
@@ -283,6 +289,18 @@ export default {
 
     }
 
+    .menu {
+      width: 100%;
+      height: auto;
+      background-color: #FFEB3B;
+      margin-bottom: -3em;
+      padding-right: 2em;
+
+      #About-link {
+        @include disable;
+      }
+    }
+
     .fixed {
 
       position: fixed;
@@ -299,6 +317,7 @@ export default {
       }
 
     }
+
 
     //Transitions
 
@@ -335,6 +354,7 @@ export default {
 @media screen and (max-width: 48rem) {
 ._body {
     .main-container {
+
       .next-container {
 
         width:100%;
@@ -349,6 +369,12 @@ export default {
           }
         }
       }
+
+      .menu {
+        padding: 0;
+        margin: 0;
+      }
+
     }
   }
 }
