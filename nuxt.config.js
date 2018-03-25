@@ -55,8 +55,7 @@ module.exports = {
   plugins: ['~plugins/vue-awesome.js' ],
 
   modules: [
-    ['nuxt-sass-resources-loader', '~/assets/mixins.scss']
+    ['nuxt-sass-resources-loader', ['~/assets/mixins.scss', '~/assets/general-class.scss']]
   ]
-
 }
 

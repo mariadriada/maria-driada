@@ -301,24 +301,6 @@ export default {
       }
     }
 
-    .fixed {
-
-      position: fixed;
-      top: 0;
-      z-index: 3;
-      -webkit-animation: swingY .3s ease-in-out;
-      animation: swingY .3s ease-in-out;
-      -webkit-animation-iteration-count: 1;
-      animation-iteration-count: 1;
-      padding: .5em;
-
-      h2 {
-        color: #9C27B0;
-      }
-
-    }
-
-
     //Transitions
 
     .budge-right {
