@@ -1,13 +1,11 @@
 <template>
-
     <ul id="basic-menu">
-      <li v-for="{ id, name, to } in links" :id="`${ name }-link`">
+      <li v-for="{ id, name, to } in links" :id="`${ name }-link`" :class="`${ name }-link`">
         <nuxt-link :to ="`${ to }`">
           {{ name }}
         </nuxt-link>
       </li>
     </ul>
-
 </template>
 
 <script>
@@ -41,9 +39,10 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 1rem;
 
   li {
-    padding: .5em;
+    padding: .5em 0 .5em 1em;
     font-size: 1.2em;
 
     a {
@@ -60,11 +59,17 @@ export default {
 
 //Media query
 
-@media screen and (max-width: 48rem) {
+@media screen and (max-width: 20rem) {
   #basic-menu {
     @include justify-content(center);
+    //font-size: .8rem;
   }
 }
 
+@media screen and (max-width: 48rem) {
+  #basic-menu {
+    font-size: .8rem;
+  }
+}
 
 </style>

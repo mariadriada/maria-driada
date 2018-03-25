@@ -74,6 +74,15 @@ export default {
     background-color: #4FC3F7;
   }
 
+  &.normal {
+     p {
+      color: #9E9E9E;
+      font-weight: 100;
+      text-align: justify;
+      font-size: 1.4em
+    }
+  }
+
   &.center {
     display: block;
     margin: 0 auto;
