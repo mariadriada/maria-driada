@@ -77,6 +77,24 @@
   flex-direction: $value;
 }
 
+@mixin flex-wrap($value: nowrap) {
+  -webkit-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+
+//https://drafts.csswg.org/css-flexbox/#flex-wrap-property
+// $params (flex-direction, flex-wrap)
+@mixin flex-flow($values: (row nowrap)) {
+  -webkit-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
 //Active element
 @mixin active($color: #FFFF00, $fw: 400 ) {
   color: $color;
