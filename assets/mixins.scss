@@ -97,3 +97,15 @@
 
   }
 }
+
+@mixin inherit-width() {
+  width: inherit;
+  max-width: inherit;
+}
+
+@mixin main-width() {
+  width: 100%;
+  max-width: 120rem;
+  display: block;
+  margin:0 auto;
+}
