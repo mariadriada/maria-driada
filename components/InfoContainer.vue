@@ -27,18 +27,14 @@ export default{
 <style lang="scss">
 
 .info-container{
+
+  @include flexbox;
+  @include justify-content(center);
+  @include align-items(center);
+
   width: 100%;
   height: 67vh;
-  display: flex;
-  display: -ms-flex;
-  display: -webkit-flex;
-  display: -moz-flex;
-  justify-content: center;
-  -webkit-justify-content: center;
-  align-items: center;
-  -webkit-align-items:center;
   position: relative;
-
 
   figure{
     height: inherit;
@@ -54,7 +50,7 @@ export default{
     height: inherit;
 
     .text-list>ul>li>.line-text {
-      color: #03A9F4;
+      color: #424242;
       padding: 0 0 1.3em 2em;
 
       .text {
@@ -64,15 +60,12 @@ export default{
       }
     }
   }
-
 }
 
 //Media queries
 
 @media screen and  (max-width: 48rem) {
-
   .info-container {
-
     height: 60vh;
 
     figure {
@@ -83,23 +76,12 @@ export default{
     &.data2 {
 
     .text-list>ul {
-
       padding-bottom: .5em;
-
-        li {
-          .line-text {
-            z-index:5;
-            font-size: .7rem;
-          }
-        }
       }
-
     }
+
   }
-
 }
-
-// Media query
 
 @media screen and (max-width: 30rem) {
   .info-container {

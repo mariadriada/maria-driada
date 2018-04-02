@@ -1,74 +1,71 @@
 <template>
-  <div class="_body">
 
-    <!-- main-container -->
-    <div class="main-container">
+  <!-- main-container -->
+  <div id="main-container">
 
-      <!-- screen -->
-      <div class="screen">
+    <!-- screen -->
+    <div id="screen">
 
-        <banner :title="`${ title }`" :subtitle="`${ subtitle }`"></banner>
+      <banner :title="`${ title }`" :subtitle="`${ subtitle }`"></banner>
 
-        <text-line :message="`${ message }`" id="fixed"class=" budge-left"></text-line>
+      <text-line :message="`${ message }`" id="fixed" class=" budge-left"></text-line>
 
-        <!--box-container-->
-        <div id="box-container" class="box-container budge-right">
-          <div class="side left-side">
-            <info-container :img="`${ img.src }`" :alt="`${ img.alt }`">
-            </info-container>
-          </div>
-
-          <div class="side center-side" >
-            <info-container activeList="true" idData="1">
-            </info-container>
-          </div>
-
-            <!-- TODO <div class="button button-down"><icon name="angle-down" scale="4"  ></icon></div>-->
-            <div v-on:click="scrollTop" class="button button-up" id="button-up">
-              <icon name="angle-up" scale="4" ></icon>
-            </div>
-
-            <div class="button button-right hidden" id="button-right">
-              <nuxt-link to="/menu">
-                <icon name="angle-right" scale="4"></icon>
-              </nuxt-link>
-            </div>
+      <!--box-container-->
+      <div id="box-container" class="box-container budge-right">
+        <div class="side left-side">
+          <info-container :img="`${ img.src }`" :alt="`${ img.alt }`">
+          </info-container>
         </div>
-        <!-- /box-container -->
 
+        <div class="side center-side" >
+          <info-container activeList="true" idData="1">
+          </info-container>
+        </div>
+
+          <!-- TODO <div class="button button-down"><icon name="angle-down" scale="4"  ></icon></div>-->
+          <div v-on:click.prevent="scrollTop" class="button button-up" id="button-up">
+            <icon name="angle-up" scale="4" ></icon>
+          </div>
+
+          <div class="button button-right hidden" id="button-right">
+            <nuxt-link to="/menu">
+              <icon name="angle-right" scale="4"></icon>
+            </nuxt-link>
+          </div>
       </div>
-      <!-- /screen -->
-
-      <!-- next-container -->
-      <div class="next-container">
-        <text-line :message="`${profession.title}`" class="sub"></text-line>
-
-        <div class="block">
-          <div class="side middle middle1">
-            <info-container activeList="true" idData="2" class="data2">
-            </info-container>
-          </div>
-
-          <div class="side middle description">
-            <opacity-container :text="`${profession.text1}`" class="blue ">
-            </opacity-container>
-          </div>
-        </div>
-
-        <div class="block b1">
-           <opacity-container :text="`${profession.text2}`" class="default center">
-            </opacity-container>
-        </div>
-      </div>
-      <!-- next-container -->
-
-    <nav class="menu"> <basic-menu/> </nav>
-    <footer-div/>
+      <!-- /box-container -->
 
     </div>
-    <!-- /main-container -->
+    <!-- /screen -->
+
+    <!-- next-container -->
+    <div class="next-container">
+      <text-line :message="`${profession.title}`" class="sub"></text-line>
+
+      <div class="block">
+        <div class="side middle middle1">
+          <info-container activeList="true" idData="2" class="data2">
+          </info-container>
+        </div>
+
+        <div class="side middle description">
+          <opacity-container :text="`${profession.text1}`" class="blue ">
+          </opacity-container>
+        </div>
+      </div>
+
+      <div class="block b1">
+          <opacity-container :text="`${profession.text2}`" class="default center">
+          </opacity-container>
+      </div>
+    </div>
+    <!-- next-container -->
+
+  <footer-div/>
+
   </div>
-  <!-- /_body -->
+  <!-- /main-container -->
+
 </template>
 
 <script>
@@ -79,6 +76,8 @@ import InfoContainer from '~/components/InfoContainer.vue'
 import FooterDiv from '~/components/Footer.vue'
 import OpacityContainer from '~/components/OpacityContainer.vue'
 import BasicMenu from '~/components/menu/BasicMenu.vue'
+
+import Observers from '~/assets/observers.js'
 
 //vue-awesome plugin import
 import "vue-awesome/icons/angle-up"
@@ -117,8 +116,9 @@ export default {
         text1: `I’m a person interested in the technology, the software architecture,
                       the planning of projects and work by objectives.`,
         text2: 'Responsible and dedicated to knowledge that I have no.',
-
       },
+      subject: [],
+      observerScroll: []
     }
   },
 
@@ -173,211 +173,267 @@ export default {
   },
   mounted () {
 
+    // Progress bar
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+
     document.getElementById('button-up').classList.add('hidden')
 
-    //Event listeners
-    document.addEventListener('scroll', this.scroll)
+   /* Handle Observers */
+
+    this.subject = new Observers.ISubject()
+
+    // Handle scroll
+    this.observerScroll = new Observers.IObserver()
+    this.subject.addObserver(this.observerScroll, this.subject)
+    this.observerScroll.notify = this.scroll
+    this.subject.notify(this.observerScroll, document, 'scroll')
+
+    // Event signals betwen vue components
     this.$on('scrollTop', this.scrollTop)
     this.$on('scrollDown', this.scrollDown)
+
+  },
+  beforeDestroy () {
+
+    // Destroy events handle and methods
+    this.subject.removeObserver(this.observerScroll, this.subject)
+    delete this.scroll
+    delete this.scrollTop
+    delete this.subject
+    delete this.observerScroll
+
+    // Disconnect event signals betwen components
+    this.$off('scrollTop', this.scrollTop)
+    this.$off('scrollDown', this.scrollDown)
   }
 }
 </script>
 
 <style lang="scss">
-._body {
 
+body {
+  background-color: #E3F2FD;
+}
+
+#main-container {
+
+  @include main-width;
+
+  height: auto;
+  background-size: 100% 100%;
+  cursor: default;
+  font-family: 'Ubuntu', sans-serif;
   padding: 0;
-  width: 100%;
+  overflow: hidden;
+  font-size: 100%;
 
-  .main-container {
-
-    min-width: 100%;
-    height: auto;
-    background-size: 100% 100%;
-    cursor: default;
-    font-family: 'Ubuntu', sans-serif;
-    padding: 0;
+  #screen {
+    @include inherit-width;
+    background-image: url('/img/bg1400.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    height: inherit;
+    padding:0;
     margin: 0;
-    overflow: hidden;
-
-    .screen {
-
-      background-image: url('/img/bg1400.jpg');
-      background-attachment: fixed;
-      background-size: cover;
-      height: inherit;
-      padding:0;
-      margin: 0;
-    }
-
-    .box-container {
-
-      display: flex;
-      display: -ms-flex;
-      display: -webkit-flex;
-      visibility: hidden;
-      height: auto;
-
-      .left-side {
-        width: 35%;
-      }
-      .center-side {
-        width: 65%;
-      }
-
-      //buttons appearance
-      .button {
-        color: #9C27B0;
-        cursor: pointer;
-      }
-      .button-up {
-        position: fixed;
-        top: 80vh;
-        right: 2%;
-        z-index: 5;
-      }
-      .button-down {
-        position: fixed;
-        top: 50vh;
-        right: 2%;
-        z-index: 5;
-      }
-      .button-right {
-        position: fixed;
-        top: 5vh;
-        right: 3%;
-        z-index: 5;
-        color:red;
-      }
-      a:visited {
-        color: #9C27B0;
-      }
-      a:line {
-        color: #9C27B0;
-      }
-
-    }
-
-    .next-container {
-
-      width: 100%;
-      height: auto;
-
-      .block {
-        width:100%;
-        display: flex;
-        display: -ms-flex;
-        display: -webkit-flex;
-        display: -moz-flex;
-
-        .middle {
-          width:50%;
-          height: inherit;
-          display: flex;
-          display: -ms-flex;
-          display: -webkit-flex;
-          display: -moz-flex;
-        }
-
-        .middle1 {
-          background-color: #FAFAFA;
-        }
-      }
-      .b1 {
-        background-image: url('/img/line.jpg');
-      }
-
-    }
-
-    .menu {
-      width: 100%;
-      height: auto;
-      background-color: #FFEB3B;
-      margin-bottom: -3em;
-      padding-right: 2em;
-
-      #About-link {
-        @include disable;
-      }
-    }
-
-    //Transitions
-
-    .budge-right {
-      visibility: visible;
-      -webkit-animation: budgeRight 1s ease;
-      animation: budgeRight 1s ease;
-      -webkit-animation-iteration-count: 1;
-      animation-iteration-count: 1;
-    }
-
-    .budge-left {
-      visibility: visible;
-      -webkit-animation: budgeLeft 1s ease;
-      animation: budgeLeft 1s ease;
-      -webkit-animation-iteration-count: 1;
-      animation-iteration-count: 1;
-    }
   }
 
-  //General class
+  .box-container {
 
-  .hidden {
+    @include inherit-width;
+    @include flexbox;
+
     visibility: hidden;
+    height: auto;
+
+    .side {
+     // border: 1px solid  red;
+    }
+
+    .left-side {
+      width: 40%;
+    }
+    .center-side {
+      width:60%;
+    }
+
+    //buttons appearance
+    .button {
+      color: #9C27B0;
+      cursor: pointer;
+    }
+    .button-up {
+      position: fixed;
+      top: 80vh;
+      right: 2%;
+      z-index: 5;
+    }
+    .button-down {
+      position: fixed;
+      top: 50vh;
+      right: 2%;
+      z-index: 5;
+    }
+    .button-right {
+      position: fixed;
+      top: 5vh;
+      right: 3%;
+      z-index: 5;
+      color:red;
+    }
+    a:visited {
+      color: #9C27B0;
+    }
+    a:line {
+      color: #9C27B0;
+    }
+
   }
 
-  .visible {
+  .next-container {
+
+    width: 100%;
+    height: auto;
+
+    .block {
+      width:100%;
+      @include flexbox;
+
+      .middle {
+        width:50%;
+        height: inherit;
+        @include flexbox;
+      }
+
+      .middle1 {
+        background-color: #FAFAFA;
+      }
+    }
+    .b1 {
+      background-image: url('/img/line.jpg');
+      background-size: cover;
+    }
+
+  }
+
+
+  #About-link {
+    @include disable;
+  }
+
+
+  //Transitions
+
+  .budge-right {
     visibility: visible;
+    -webkit-animation: budgeRight 1s ease;
+    animation: budgeRight 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+  }
+
+  .budge-left {
+    visibility: visible;
+    -webkit-animation: budgeLeft 1s ease;
+    animation: budgeLeft 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
   }
 }
+
 
 //Media queries
 
 @media screen and (max-width: 48rem) {
-._body {
-    .main-container {
 
-      .next-container {
+  #main-container {
 
-        width:100%;
-        font-size: 1rem;
+    font-size: 70%;
 
-        .block {
+    #box-container {
+      .center-side {
+        padding-left: 5%;
+      }
+    }
+
+    .next-container {
+
+      width:100%;
+
+      .block {
+
+        width: 100%;
+        @include flex-direction(column);
+
+        .middle {
           width: 100%;
-          display:block;
-
-          .middle {
-            width: 100%;
-          }
         }
       }
+    }
 
-      .menu {
-        padding: 0;
-        margin: 0;
-      }
-
+    .menu {
+      padding: 0;
+      margin: 0;
     }
   }
 }
 
 @media screen and (max-width: 30rem) {
-._body {
-  .main-container {
+
+  #main-container {
     #box-container {
 
-      display: block;
+      @include flex-direction(column)
 
-        .side {
-          width: 100%;
-        }
+      .side {
+        width: 100%;
+      }
 
-        .center-side {
-          background-color: #4FC3F7;
-        }
+      .center-side {
+        background-color: #4FC3F7;
+        padding-left:1em;
       }
     }
   }
 }
+
+@media screen and (max-width: 20rem) {
+  #main-container {
+    font-size: 60%;
+
+    #data-container {
+      top: 20vh;
+    }
+  }
+}
+
+
+@media screen and (min-width: 100rem) {
+  #main-container {
+    font-size: 150%;
+  }
+}
+
+@media screen and (min-width: 120rem) {
+  #main-container {
+   font-size: 180%;
+  }
+}
+
+@media screen and (min-width: 150rem) {
+  #main-container {
+    font-size: 210%;
+  }
+}
+
+@media screen and (min-width: 200rem) {
+  #main-container {
+    font-size: 270%;
+  }
+}
+
 
 </style>

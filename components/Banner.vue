@@ -1,5 +1,5 @@
 <template>
-  <header class="header-container show">
+  <header id="header-container">
       <h1 v-if="title"> {{ title }} </h1>
       <h2 v-if="subtitle" > {{ subtitle }} </h2>
   </header>
@@ -17,15 +17,17 @@ export default {
 
 $opacity: 0.3;
 
-.header-container {
+#header-container {
 
-  min-width: 100%;
-  text-align: center;
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(center);
+  @include align-items(center);
+
+  @include inherit-width;
   z-index:2;
-  font-size: 1rem;
   position: relative;
   color: #9C27B0;
-  display: block;
   background-color: transparent;
 
   ::before {
@@ -49,7 +51,6 @@ $opacity: 0.3;
     padding: 0.3em 0 0.001em 0;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-family: 'Orbitron', sans-serif;
   }
 
   h2 {
@@ -58,32 +59,6 @@ $opacity: 0.3;
     padding-bottom: .5em;
   }
 
-}
-
-//Media queries
-
-@media screen and (max-width: 48rem) {
-  .header-container  {
-      font-size: .9rem;
-  }
-}
-
-@media screen and (max-width: 30rem) {
-  .header-container  {
-
-    height: 17vh;
-    font-size: .7rem;
-
-    h1 {
-        letter-spacing:0;
-    }
-  }
-}
-
-@media screen and (min-width: 105rem) {
-  .header-container  {
-     font-size: 1.5rem;
-  }
 }
 
 </style>
