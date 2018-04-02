@@ -1,6 +1,6 @@
 <template>
   <ul class="menu">
-    <opt v-for="{ id, name, window, active, link } in options "
+    <opt v-for="{ id, name, window, active, link } in options " @move="move"
     :key = "id"
     :name = "`${ name }`"
     :window = "`${ window }`"
@@ -20,15 +20,17 @@ export default {
   data () {
     return {
       options: [
-      //  { id: 1, name: 'About', window:'selft', active: true,  link: '/about' },
-        { id: 2, name: 'Performance', window:'', active: true, link: '.' },
-        { id: 3, name: 'Development', window:'', active: true, link: '.' },
-        { id: 4, name: 'Data', window:'', active: true, link: ''},
-      //  { id: 5, name: 'Code', window:'', active: true, link: 'https://github.com/mariagiraldo/maria-driada', active: true },
-      //  { id: 6, name: 'Contact', window:'', active: true, active: true, link: '' }
+        { id: 1, name: 'Performance', window:'', active: true, link: '' },
+        { id: 2, name: 'Technologies', window:'', active: true, link: '' },
+        { id: 3, name: 'DataBases', window:'', active: true, link: ''},
       ]
     }
-  }
+  },
+  methods: {
+    move() {
+      this.$emit('move')
+    }
+  },
 }
 </script>
 
@@ -44,19 +46,9 @@ export default {
   height: 100%;
   list-style: none;
   font-family: 'Ubuntu', sans-serif;
-  background-color: red;
+  background-color: #FFFDE7;
   padding: 0;
- // margin-top: -3em;
 
-
-}
-
-//Media queries
-
-@media screen and (max-width: 48rem) {
-  .menu {
-    //@include justify-content(center);
-  }
 }
 
 </style>

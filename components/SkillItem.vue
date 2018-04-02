@@ -1,35 +1,42 @@
 <template>
   <li class="skill-item">
+
     <figure >
       <a target="_blank" :href="`${ doc }`">
         <img :src="`${ img }`" :alt="`${ alt }`" />
       </a>
     </figure>
+
     <hgroup class="name">
       <h1 class="name-text"> {{ name }} </h1>
       <h2 class="level-tag"> {{ tag }} </h2>
       <h3 class="description"> {{ description }} </h3>
     </hgroup>
+
   </li>
 </template>
 
 <script>
+
 export default {
   props: ['name', 'description', 'level', 'img', 'alt', 'doc',  'tag']
 }
+
 </script>
 
 <style lang="scss">
+
 .skill-item {
-  min-width: 23%;
-  max-width: 23%;
-  //height: 16em;
+
+  @include flexbox;
+  @include align-items(baseline);
+  @include flex-direction(column);
+  @include justify-content(center);
+
+  width: 30%;
   max-height: 16em;
-  display: flex;
-  align-items: baseline;
-  flex-direction: column;
-  align-items: center;
-  margin: .5em;
+  font-size: 100%;
+  margin: .3em;
   padding: .5em;
 
   figure {
@@ -38,28 +45,24 @@ export default {
     padding: .5em 0 0 0;
 
     img {
-      //width: auto;
-      min-width:5rem;
+      max-width: 80%;
       height: 100%;
       display: block;
       margin: 0 auto;
-      border: 0px;
+      border: 0;
     }
   }
 
   hgroup {
+
     width:100%;
-    height:40%;
+    height:auto;
     text-align:center;
-    font-size: 1rem;
-    //font-family: 'Orbitron', sans-serif;    font-family: 'Roboto Mono', monospace;
 
     h1{
       padding: .5em;
-      color: #01579B;
       font-size: 1.5em;
       font-weight: 400;
-      font-family: 'Roboto Mono', monospace;
     }
 
     h2 {
@@ -67,21 +70,20 @@ export default {
       font-weight: 400;
       color: #F9FBE7;
       font-size: 1.1em;
-      font-family: 'Ubuntu', sans-serif;
     }
 
     h3 {
       padding: 0 .5em 0.5em .5em;
       font-weight: 400;
       font-size: 1em;
-      text-align: justify;
+      text-align: left;
       font-style: Italic;
       padding: .5em;
       color: #757575;
     }
   }
 
-  // Style performance //mixin
+  // Style performance mixin
   @mixin performance($bkg, $border-color, $text-color, $content) {
 
     background-color: $bkg;
@@ -110,28 +112,32 @@ export default {
   &.moderate {
     @include performance(#FFF8E1, #FFA726, #E65100, 'Moderate applied performance');
   }
+
+  //Basic performance
+  &.basic {
+    @include performance(#E1F5FE, #01579B, #01579B, 'Basic applied performance');
+  }
+}
+
+// Media queries
+
+@media screen and (min-width: 80rem) {
+  .skill-item {
+    width: 23%;
+  }
 }
 
 @media screen and (max-width: 48rem) {
-    .skill-item {
-      min-width: 40%;
-      background-color: red;
-     // font-size: .5rem;
-      max-height: 18rem;
-
-      figure {
-        img {
-          max-width:8rem;
-        }
-      }
-    }
+  .skill-item {
+    min-width: 45%;
+    font-size: 130%;
   }
+}
 
-  @media screen and (max-width: 30rem) {
-    .skill-item {
-      min-width: 80%;
-      max-height: 16rem;
-
-    }
+@media screen and (max-width: 30rem) {
+  .skill-item {
+    min-width: 100%;
   }
+}
+
 </style>

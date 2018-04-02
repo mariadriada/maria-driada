@@ -18,18 +18,15 @@ export default{
 $color:#FFFDE7;
 
 .line-text {
-  font-size: 1rem;
   width: 100%;
-  display: flex;
-  display: -ms-flexbox;
-  align-items:center;
-  -ms-flex-align:center;
-  font-size: 1rem;
+
+  @include flexbox;
+  @include align-items(center)
+
   min-height: 1.5em;
   height: auto;
   color: $color;
   margin-bottom: .7em;
-
 
   .text {
     width: 90%;
@@ -50,19 +47,10 @@ $color:#FFFDE7;
 
 //Media queries
 
-@media screen and (max-width: 48rem ) {
-  .line-text {
-     font-size: .7rem;
-  }
-}
-
 @media screen and (max-width: 30rem) {
   .line-text {
-    font-size: .6rem;
     text-align: left;
-    padding-left: 2em;
   }
 }
-
 
 </style>

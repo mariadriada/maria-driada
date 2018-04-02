@@ -17,21 +17,17 @@
     </section>
 
     <nav id="menu-top"> <basic-menu/></nav>
-<!--
-    <nav class="content nav">
-      <main-menu/>
-    </nav>-->
 
   </header>
 </template>
 
 <script>
-import MainMenu from '~/components/menu/Menu.vue'
+
 import BasicMenu from '~/components/menu/BasicMenu.vue'
 
 export default {
+
   components: {
-    MainMenu,
     BasicMenu
   },
   data() {
@@ -42,27 +38,23 @@ export default {
       alt: 'Maria Eugenia Giraldo Forero'
     }
   }
+
 }
+
 </script>
 
 <style lang="scss">
 
 #header2-container {
 
-  width: 100%;
+  @include inherit-width;
   height: auto;
-  //height: 25vh;
-  //background-color: #4FC3F7;
- // display: flex;
-
-  font-size: 1rem;
   position: fixed;
   z-index: 2;
 
   section {
 
     @include flexbox;
-
     background-color: #4FC3F7;
     height: auto;
 
@@ -89,30 +81,24 @@ export default {
 
     hgroup {
       width:60%;
-      //height: 50%;
       padding: 0.5em 2em 0 0;
       text-align: right;
 
       @include flexbox;
-    //  @include justify-content(flex-end);
       @include flex-direction(column);
 
       h1 {
         color: #FAFAFA;
         font-weight: 100;
         font-size: 1.6em;
-      //padding-top:0.5em;
-        font-family: 'Orbitron', sans-serif;
       }
 
       h2{
-        width:70%;
         margin-left: 30%;
         color: #FFFF00;
         font-weight: 200;
         font-style: oblique;
         font-size: 1.1em;
-        font-family: 'Raleway', sans-serif;
       }
     }
   }
@@ -137,21 +123,12 @@ export default {
 
 //Media queries
 
-@media screen and (min-width: 48rem) {
-  #menu-top {
-   // margin-top: -3rem;
-   // background-color: #4FC3F7;
-  }
-}
 
 @media screen and (max-width: 48rem) {
   #header2-container {
-    font-size: .5rem;
 
     #menu-top {
-      background-color:red;
       margin-top: -2.5rem;
-      //font-size: 1rem;
     }
   }
 
@@ -168,20 +145,20 @@ export default {
 
 @media screen and (max-width: 20rem) {
   #header2-container {
+
     section {
       hgroup {
          @include justify-content(space-around);
          padding-top:0;
       }
     }
-     #menu-top {
+
+    #menu-top {
       margin-top: 0;
       background-color: #AA00FF;
     }
+
   }
 }
-
-
-
 
 </style>

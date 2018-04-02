@@ -53,6 +53,35 @@ export default{
         { id: 3, text: 'Analyst and software developer performance.', active: true, circle: '' },
       ]
     }
+    else if (this.idData === "3") {
+      // Skills list
+      list=
+      [
+        { id: 1, text: 'Software analysis', active: true, circle: 'true' },
+        { id: 2, text: 'Front-end and back-end development' , circle: 'true' },
+        { id: 3, text: 'Version control systems', active: true, circle: 'true' },
+        { id: 4, text: 'Infraestructure and scalability', active: true, circle: 'true' },
+        { id: 5, text: 'Algorithms design ', active: true, circle: 'true' },
+        { id: 6, text: 'Object oriented desing ', active: true, circle: 'true' },
+        { id: 7, text: 'Cross browser compatibility ', active: true, circle: 'true' },
+        { id: 8, text: 'Responsive design', active: true, circle: 'true' },
+      ]
+    }
+    else if (this.idData === "4") {
+      // Skills list
+      list=
+      [
+
+        { id: 1, text: 'Client-side development', active: true, circle: 'true' },
+        { id: 2, text: 'Dynamic web applications', active: true, circle: 'true' },
+        { id: 3, text: 'Semantic web templates', active: true, circle: 'true' },
+        { id: 4, text: 'Data structures ', active: true, circle: 'true' },
+        { id: 5, text: 'Client Relation Management', active: true, circle: 'true' },
+        { id: 6, text: 'Content Management System', active: true, circle: 'true' },
+        { id: 7, text: 'Debugging and problem solving ', active: true, circle: 'true' },
+        { id: 8, text: 'Learning fast', active: true, circle: 'true' },
+      ]
+    }
     this.text = list;
   }
 
@@ -71,6 +100,35 @@ export default{
     height: auto;
     font-style: italic;
     font-weight: 400;
+  }
+
+  &.normal {
+   // background-color:red;
+
+    ul {
+      font-style: normal;
+      font-weight: 100;
+
+      li {
+        .line-text {
+          color: #424242;
+          padding-bottom: 1em;
+
+          .text {
+              font-size: 1.5em;
+              text-align: left;
+              margin: 0;
+            }
+
+            .circle {
+              background-color: #03A9F4;
+              width: .7em;
+              height: .7em;
+              line-height: 1.5em;
+            }
+        }
+      }
+    }
   }
 
 }

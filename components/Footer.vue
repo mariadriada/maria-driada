@@ -1,26 +1,37 @@
 <template>
   <footer>
 
-    <section class="author">
-      <p class="text">
-        {{ text }}
-      </p>
-      <p class="cc"> {{ cc }} </p>
-    </section>
+    <nav class="menu"> <basic-menu/> </nav>
 
-    <aside class="img">
-      <figure>
-        <img :src="`${ img }`" :alt="`${ alt }`" />
-      </figure>
-    </aside>
+    <div>
+
+      <section class="author">
+        <p class="text">
+          {{ text }}
+        </p>
+        <p class="cc"> {{ cc }} </p>
+      </section>
+
+      <aside id="img">
+        <figure>
+          <img :src="`${ img }`" :alt="`${ alt }`" />
+        </figure>
+      </aside>
+
+    </div>
 
   </footer>
 </template>
 
 <script>
 
+import BasicMenu from '~/components/menu/BasicMenu.vue'
+
 export default {
 
+  components: {
+    BasicMenu
+  },
   data () {
     return {
       text:'Design and development by',
@@ -38,130 +49,144 @@ export default {
 <style lang="scss">
 
 footer {
+
   background-color: #FFEB3B;
   min-height: 25vh;
-  width:100%;
   margin: 0 auto;
-  display: flex;
-  display: -ms-flex;
-  display: -webkit-flex;
-  font-size: 1rem;
+  @include inherit-width;
 
-  .author {
+  div {
+    @include flexbox
 
-    width:50%;
-    font-family: 'Indie Flower', cursive;
-    font-size: inherit;
-    display: flex;
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: -moz-flex;
-    align-items: left;
-    flex-direction: column;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    justify-content: center;
-    -ms-justify-content: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    padding-left: 2em;
-    color: #9C27B0;
+    .author {
 
-    .text{
-      padding-top: 1.5em;
-      font-size: 1.3em;
-    }
+      @include flexbox;
+      @include align-items(left);
+      @include flex-direction(column);
+      @include justify-content(center);
 
-    .cc {
-      font-size: 3.5em;
-    }
-  }
+      width:50%;
+      font-family: 'Indie Flower', cursive;
+      font-size: inherit;
+      padding-left: 2em;
+      color: #9C27B0;
+      height: auto;
 
-  .img {
+      .text{
+        font-size: 1.3em;
+      }
 
-    width: 50%;
-    height:inherit;
-    font-size:inherit;
-    display: flex;
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: -moz-flex;
-    justify-content: flex-end;
-    -webkit-justify-content: flex-end;
-    align-items: flex-end;
-    -webkit-align-items: flex-end;
-    padding-right: 2em;
-
-    figure {
-      width: 17em;
-      border-top: 1px solid #9C27B0;;
-
-      img {
-        width: inherit;
-        padding: .5em;
+      .cc {
+        font-size: 3em;
       }
     }
 
+    #img {
+
+      @include flexbox;
+      @include align-items(flex-end);
+      @include justify-content(flex-end);
+
+      width: 50%;
+      height:inherit;
+      font-size:inherit;
+      padding-right: 2em;
+
+      figure {
+        width: 17em;
+
+        img {
+          width: inherit;
+          padding: .5em;
+          border-bottom: 1px solid #9C27B0;
+        }
+      }
+    }
   }
+
+  .menu {
+    width: 100%;
+    height: auto;
+    background-color: #FFEB3B;
+    padding-right: 2em;
+  }
+
 }
 
 //Media queries
 
 @media screen and (max-width: 48rem) {
   footer {
+    div {
 
-    display: block;
-    font-size: .7rem;
+      display: block;
 
-    .author {
-      width: 100%;
-      display:block;
-      padding: 0;
-      margin: 0 auto;
-      text-align:center;
-    }
-
-    .img {
-      width: 100%;
-      padding: 1em 0 1em 0;
-
-      figure{
+      .author {
         width: 100%;
+        display:block;
+        padding: 0;
+        margin: 0 auto;
+        text-align:center;
+      }
 
-        img {
-          width: 40%;
-          display:block;
-          margin: 0 auto;
-          padding-top:2em;
+      #img {
+        width: 100%;
+        padding: 1em 0 1em 0;
+
+        figure{
+          width: 100%;
+
+          img {
+            width: 40%;
+            display:block;
+            margin: 0 auto;
+            padding-top:2em;
+          }
         }
       }
     }
+  }
 
+  .menu {
+    #basic-menu {
+      @include justify-content(center);
+      padding: 1em 0 3em 0;
+    }
   }
 }
 
 @media screen and (max-width: 38rem) {
   footer {
-    .img {
-      figure {
-        img {
-          width: 50%;
+    div {
+      #img {
+        figure {
+          img {
+            width: 50%;
+          }
         }
       }
     }
   }
 }
 
-
 @media screen and (max-width: 28rem) {
-  footer{
-    .img {
-      figure{
-        img {
-          width: 70%;
+  footer {
+    div {
+      #img {
+        figure {
+          img {
+            width: 70%;
+          }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 20rem) {
+  footer {
+  .menu {
+      //padding: 1em 0 2em 0;
     }
   }
 }

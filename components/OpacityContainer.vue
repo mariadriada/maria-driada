@@ -13,26 +13,21 @@ export default {
 
 </script>
 
-
 <style lang="scss">
 
 .opacity-container {
+
+  @include flexbox;
+  @include align-items(center)
+
   width: 100%;
   heigh: auto;
   position: relative;
   z-index: 1;
-  display: flex;
-  display: -ms-flex;
-  display: -webkit-flex;
-  display: -moz-flex;
-  align-items: center;
-  -webkit-align-items: center;
-  font-size: 1rem;
-
 
   p {
     width: inherit;
-    color: #FFF176;
+    color: #FFEB3B;
     font-size: 1.7em;
     text-align: center;
     padding: 2em;
@@ -70,16 +65,28 @@ export default {
     }
   }
 
+  &.text-normal {
+    p {
+      font-size: 1.5em;
+    }
+  }
+
+  &.purple{
+    margin: 2em 0 2em 0;
+    background-color: #9C27B0;
+  }
+
   &.blue {
     background-color: #4FC3F7;
   }
 
-  &.normal {
+  &.purple-text {
      p {
-      color: #9E9E9E;
-      font-weight: 100;
-      text-align: justify;
-      font-size: 1.4em
+      color: #9C27B0;
+      text-align: left;
+      padding: .5em;
+      line-height: 1.5em;
+      padding: 0 0 2em 0;
     }
   }
 
@@ -88,14 +95,6 @@ export default {
     margin: 0 auto;
   }
 
-}
-
-// Media query
-
-@media screen and (max-width: 48rem) {
-  .opacity-container {
-    font-size: .7rem;
-  }
 }
 
 </style>
