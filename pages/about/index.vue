@@ -75,7 +75,6 @@ import TextLine from '~/components/TextLine.vue'
 import InfoContainer from '~/components/InfoContainer.vue'
 import FooterDiv from '~/components/Footer.vue'
 import OpacityContainer from '~/components/OpacityContainer.vue'
-import BasicMenu from '~/components/menu/BasicMenu.vue'
 import Observers from '~/assets/observers.js'
 
 //vue-awesome plugin import
@@ -92,7 +91,6 @@ export default {
     InfoContainer,
     OpacityContainer,
     Icon,
-    BasicMenu,
     FooterDiv
   },
 
@@ -124,6 +122,7 @@ export default {
   methods: {
 
     scrollTop () {
+
       let html = document.documentElement
       let to = document.documentElement.scrollTop
 
@@ -140,7 +139,6 @@ export default {
     },
 
     scroll(event) {
-      console.log('scrollppal')
 
       const scroll = document.documentElement.scrollTop
       let textelement = document.getElementById('fixed')
@@ -199,7 +197,6 @@ export default {
   },
   beforeDestroy () {
 
-
     // Destroy events handle and methods
     this.subject.removeObserver(this.observerScroll, this.subject)
     delete this.scroll
@@ -214,7 +211,6 @@ export default {
   },
   destroyed () {
     console.log('destruido', this.title)
-    //this.scroll()
   }
 }
 </script>
@@ -254,10 +250,6 @@ body {
 
     visibility: hidden;
     height: auto;
-
-    .side {
-     // border: 1px solid  red;
-    }
 
     .left-side {
       width: 40%;
@@ -325,11 +317,9 @@ body {
 
   }
 
-
   #About-link {
     @include disable;
   }
-
 
   //Transitions
 
@@ -354,7 +344,6 @@ body {
 //Media queries
 
 @media screen and (max-width: 48rem) {
-
   #main-container {
 
     font-size: 70%;
@@ -366,7 +355,6 @@ body {
     }
 
     .next-container {
-
       width:100%;
 
       .block {
@@ -388,7 +376,6 @@ body {
 }
 
 @media screen and (max-width: 30rem) {
-
   #main-container {
     #box-container {
 
@@ -440,6 +427,5 @@ body {
     font-size: 270%;
   }
 }
-
 
 </style>
