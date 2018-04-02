@@ -8,9 +8,16 @@
   animation: swingY .3s ease-in-out;
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
-  padding: .5em;
 
   h2 {
     color: #9C27B0;
   }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }

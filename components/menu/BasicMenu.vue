@@ -39,36 +39,22 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 1rem;
 
   li {
     padding: .5em 0 .5em 1em;
-    font-size: 1.2em;
+    font-size: 1.3em;
 
     a {
       text-decoration: none;
       color: #9C27B0;
 
+      transition:  color 0.8s linear 0.2s;
+      -webkit-transition:color 0.8s linear 0.2s;
+
       &:hover {
         @include active(#4FC3F7);
       }
-
     }
-  }
-}
-
-//Media query
-
-@media screen and (max-width: 20rem) {
-  #basic-menu {
-    @include justify-content(center);
-    //font-size: .8rem;
-  }
-}
-
-@media screen and (max-width: 48rem) {
-  #basic-menu {
-    font-size: .8rem;
   }
 }
 
