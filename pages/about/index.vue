@@ -76,7 +76,6 @@ import InfoContainer from '~/components/InfoContainer.vue'
 import FooterDiv from '~/components/Footer.vue'
 import OpacityContainer from '~/components/OpacityContainer.vue'
 import BasicMenu from '~/components/menu/BasicMenu.vue'
-
 import Observers from '~/assets/observers.js'
 
 //vue-awesome plugin import
@@ -141,6 +140,7 @@ export default {
     },
 
     scroll(event) {
+      console.log('scrollppal')
 
       const scroll = document.documentElement.scrollTop
       let textelement = document.getElementById('fixed')
@@ -199,6 +199,7 @@ export default {
   },
   beforeDestroy () {
 
+
     // Destroy events handle and methods
     this.subject.removeObserver(this.observerScroll, this.subject)
     delete this.scroll
@@ -209,6 +210,11 @@ export default {
     // Disconnect event signals betwen components
     this.$off('scrollTop', this.scrollTop)
     this.$off('scrollDown', this.scrollDown)
+
+  },
+  destroyed () {
+    console.log('destruido', this.title)
+    //this.scroll()
   }
 }
 </script>
