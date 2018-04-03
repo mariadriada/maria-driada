@@ -269,10 +269,6 @@ export default {
 
 <style lang="scss">
 
-body {
-  background-color: #E3F2FD;
-}
-
 #skills-main-container {
 
   background-color: #FAFAFA;
@@ -280,8 +276,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
   height: auto;
   font-size: 100%;
-  width: 100%;
-  max-width: 120rem;
+  @include main-width;
   display: block;
   margin:0 auto;
 
@@ -393,8 +388,8 @@ body {
   }
 }
 
-@skills-media screen and (max-width: 20rem) {
-  #main-container {
+@media screen and (max-width: 20rem) {
+  #skills-main-container {
     font-size: 60%;
 
     #data-container {

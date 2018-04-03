@@ -217,10 +217,6 @@ export default {
 
 <style lang="scss">
 
-body {
-  background-color: #E3F2FD;
-}
-
 #main-container {
 
   @include main-width;
