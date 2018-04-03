@@ -16,7 +16,7 @@ export default {
       links: [
         { id: 1, name: 'About', to: '/about' },
         { id: 2, name: 'Skills', to: '/skills' },
-        { id: 3, name: 'Experience', to: '/experiene' },
+        { id: 3, name: 'Experience', to: '/experience' },
       ]
     }
   }
