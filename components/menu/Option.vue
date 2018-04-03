@@ -1,5 +1,5 @@
 <template>
-    <li @click="change" class="tabs-item " :class="`${ name }-link`" >
+    <li @click="change" class="tabs-item " :class="`${ name }-link`" :id="`link${ id }`" >
       {{ name }}
     </li>
 </template>
@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  props: ['name'],
+  props: ['id', 'name'],
   methods: {
 
     // Check skill menu option clicked and activate the correct panel by scrolling
@@ -31,7 +31,7 @@ export default {
     },
   },
   mounted () {
-    document.getElementsByClassName('Performance-link')[0].classList.add('active');
+    document.getElementById('link1').classList.add('active');
   }
 }
 
@@ -52,7 +52,7 @@ export default {
   transition:  color 0.8s linear 0.2s;
   -webkit-transition:color 0.8s linear 0.2s;
 
-  &.Performance-link {
+  &#link1 {
     border-left: 0;
   }
 

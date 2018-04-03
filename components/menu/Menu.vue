@@ -1,10 +1,9 @@
 <template>
   <ul class="menu">
-    <opt v-for="{ id, name, window, active, link } in options " @move="move"
+    <opt v-for="{ id, name, active, link } in options " @move="move"
     :key = "id"
+    :id = "id"
     :name = "`${ name }`"
-    :window = "`${ window }`"
-    :link = "`${ link }`"
     v-if = "active">
     </opt>
   </ul>
@@ -20,9 +19,9 @@ export default {
   data () {
     return {
       options: [
-        { id: 1, name: 'Performance', window:'', active: true, link: '' },
-        { id: 2, name: 'Technologies', window:'', active: true, link: '' },
-        { id: 3, name: 'DataBases', window:'', active: true, link: ''},
+        { id: 1, name: 'Performance', active: true },
+        { id: 2, name: 'Technologies',  active: true },
+        { id: 3, name: 'DataBases',  active: true },
       ]
     }
   },
@@ -30,7 +29,7 @@ export default {
     move() {
       this.$emit('move')
     }
-  },
+  }
 }
 </script>
 
