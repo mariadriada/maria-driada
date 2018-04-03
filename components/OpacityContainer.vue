@@ -90,6 +90,16 @@ export default {
     }
   }
 
+  &.purple-text-serie {
+    p {
+      color: #9C27B0;
+      text-align: left;
+      padding: .5em;
+      line-height: 1.5em;
+      padding: 2em 0 1em 0;
+    }
+  }
+
   &.center {
     display: block;
     margin: 0 auto;
