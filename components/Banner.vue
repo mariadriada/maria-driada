@@ -27,9 +27,12 @@ $opacity: 0.3;
   @include inherit-width;
   z-index:2;
   position: relative;
-  color: #9C27B0;
-  background-color: transparent;
+  color: #FFFDE7;
+  background-color: #9C27B0;
+  font-family: 'Ubuntu', sans-serif;
+  background-image: url('/img/texturebkg.jpg');
 
+/*
   ::before {
     width: 100%;
     content: "";
@@ -44,7 +47,8 @@ $opacity: 0.3;
     filter: alpha(opacity = $opacity*1000);
     khtml-opacity: $opacity;
     -moz-opacity: $opacity;
-  }
+  }*/
+
 
   h1 {
     font-size: 4em;

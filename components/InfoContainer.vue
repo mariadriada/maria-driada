@@ -5,7 +5,7 @@
           <img :src="`${ img }`" :alt="`${ alt }`" />
     </figure>
 
-    <list :idData="`${ idData }`" v-if="activeList">
+    <list :idData="`${ idData }`" v-if="activeList" :cls="`${ cls }`">
     </list>
 
   </div>
@@ -19,7 +19,7 @@ export default{
   components: {
     List
   },
-  props: ['img','alt','activeList', 'idData'],
+  props: ['img','alt','activeList', 'idData', 'cls'],
  }
 
 </script>
@@ -38,7 +38,7 @@ export default{
 
   figure{
     height: inherit;
-    margin-left: 40%;
+    margin-left: 50%;
 
     img{
       height: inherit;
@@ -83,9 +83,37 @@ export default{
   }
 }
 
-@media screen and (max-width: 30rem) {
+@media screen and (max-width: 30rem)  {
   .info-container {
-    height: 35vh;
+    height: auto;
+
+    figure {
+       margin-bottom: -1%;
+    }
+  }
+}
+
+
+/* Smartphones (landscape)*/
+@media only screen and (min-width : 20rem) and (max-height : 30rem) and ( orientation: landscape ) {
+  .info-container {
+    .text-list>ul>li {
+
+      .line-text {
+        margin-bottom: .3em;
+        padding: .1em;
+
+        .text {
+          font-size: 1.3em;
+        }
+
+        .circle {
+          width: 1.2em;
+          height: 1.2em;
+          line-height: 1.3em;
+        }
+      }
+    }
   }
 }
 

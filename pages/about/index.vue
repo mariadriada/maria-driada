@@ -3,40 +3,34 @@
   <!-- main-container -->
   <div id="main-container">
 
-    <!-- screen -->
-    <div id="screen">
+    <banner :title="`${ title }`" :subtitle="`${ subtitle }`"></banner>
 
-      <banner :title="`${ title }`" :subtitle="`${ subtitle }`"></banner>
+    <text-line :message="`${ message }`" id="fixed" class=" budge-left"></text-line>
 
-      <text-line :message="`${ message }`" id="fixed" class=" budge-left"></text-line>
-
-      <!--box-container-->
-      <div id="box-container" class="box-container budge-right">
-        <div class="side left-side">
-          <info-container :img="`${ img.src }`" :alt="`${ img.alt }`">
-          </info-container>
-        </div>
-
-        <div class="side center-side" >
-          <info-container activeList="true" idData="1">
-          </info-container>
-        </div>
-
-          <!-- TODO <div class="button button-down"><icon name="angle-down" scale="4"  ></icon></div>-->
-          <div v-on:click.prevent="scrollTop" class="button button-up" id="button-up">
-            <icon name="angle-up" scale="4" ></icon>
-          </div>
-
-          <div class="button button-right hidden" id="button-right">
-            <nuxt-link to="/menu">
-              <icon name="angle-right" scale="4"></icon>
-            </nuxt-link>
-          </div>
+    <!--box-container-->
+    <div id="box-container" class="box-container budge-right">
+      <div class="side left-side">
+        <info-container :img="`${ img.src }`" :alt="`${ img.alt }`">
+        </info-container>
       </div>
-      <!-- /box-container -->
 
+      <div class="side center-side" >
+        <info-container activeList="true" idData="1" cls="bkg">
+        </info-container>
+      </div>
+
+        <!-- TODO <div class="button button-down"><icon name="angle-down" scale="4"  ></icon></div>-->
+        <div v-on:click.prevent="scrollTop" class="button button-up" id="button-up">
+          <icon name="angle-up" scale="4" ></icon>
+        </div>
+
+        <div class="button button-right hidden" id="button-right">
+          <nuxt-link to="/menu">
+            <icon name="angle-right" scale="4"></icon>
+          </nuxt-link>
+        </div>
     </div>
-    <!-- /screen -->
+    <!-- /box-container -->
 
     <!-- next-container -->
     <div class="next-container">
@@ -224,20 +218,10 @@ export default {
   height: auto;
   background-size: 100% 100%;
   cursor: default;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Raleway', sans-serif;
   padding: 0;
   overflow: hidden;
   font-size: 100%;
-
-  #screen {
-    @include inherit-width;
-    background-image: url('/img/bg1400.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    height: inherit;
-    padding:0;
-    margin: 0;
-  }
 
   .box-container {
 
@@ -246,6 +230,9 @@ export default {
 
     visibility: hidden;
     height: auto;
+    background-image: url('/img/t4.jpg');
+
+    background-attachment: fixed;
 
     .left-side {
       width: 40%;
@@ -307,8 +294,7 @@ export default {
       }
     }
     .b1 {
-      background-image: url('/img/line.jpg');
-      background-size: cover;
+      background-image: url('/img/texturebkg.jpg');
     }
 
   }
@@ -345,9 +331,7 @@ export default {
     font-size: 70%;
 
     #box-container {
-      .center-side {
-        padding-left: 5%;
-      }
+      background-size: 30%;
     }
 
     .next-container {
@@ -376,14 +360,16 @@ export default {
     #box-container {
 
       @include flex-direction(column)
+      background-image: url('/img/tsmall.png');
+      background-size: 50%;
 
       .side {
         width: 100%;
       }
 
       .center-side {
-        background-color: #4FC3F7;
-        padding-left:1em;
+        padding: 1em 0 1em 1em;
+        border-top: 2px groove #FFF176;
       }
     }
   }
@@ -409,6 +395,9 @@ export default {
 @media screen and (min-width: 120rem) {
   #main-container {
    font-size: 180%;
+  }
+   #box-container {
+    background-size: 20%;
   }
 }
 

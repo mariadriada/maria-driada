@@ -1,8 +1,8 @@
 <template>
   <div class="text-list">
     <ul>
-      <li v-for="{id, text, active, circle} in text " :key="id">
-        <item :text="`${ text }`" :circle="`${ circle }`">>
+      <li v-for="{id, text, active, circle} in text " :key="id" >
+        <item :text="`${ text }`" :circle="`${ circle }`" :class="`${ cls}`">
         </item>
       </li>
     </ul>
@@ -18,7 +18,7 @@ export default{
   components: {
     Item
   },
-  props: ['idData'],
+  props: ['idData','cls'],
   data () {
     return {
       text: []
@@ -103,12 +103,12 @@ export default{
   }
 
   &.normal {
-   // background-color:red;
 
     ul {
       font-style: normal;
       font-weight: 100;
 
+      //TODO: implementary in Item component
       li {
         .line-text {
           color: #424242;
