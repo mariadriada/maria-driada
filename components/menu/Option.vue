@@ -41,13 +41,13 @@ export default {
 
 .tabs-item {
   padding: .5em 0 .5em 0;
-  color: #9E9E9E;
+  color: #616161;
   width: 35%;
   max-width: auto;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.4em;
   cursor: pointer;
-  border-left: 1px solid #FFF176;
+  border-left: 2px solid #03A9F4;
 
   transition:  color 0.8s linear 0.2s;
   -webkit-transition:color 0.8s linear 0.2s;

@@ -45,7 +45,7 @@ export default {
   height: 100%;
   list-style: none;
   font-family: 'Ubuntu', sans-serif;
-  background-color: #FFFDE7;
+  background-color: #FFF9C4;
   padding: 0;
 
 }
